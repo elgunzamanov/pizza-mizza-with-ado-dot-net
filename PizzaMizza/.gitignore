@@ -1,0 +1,7 @@
+﻿bin/
+obj/
+.idea/*
+*.user
+*.suo
+*.vs
+*.log
