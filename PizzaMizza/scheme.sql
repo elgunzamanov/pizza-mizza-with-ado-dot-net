@@ -1,0 +1,38 @@
+﻿CREATE DATABASE PizzaMizza;
+
+USE PizzaMizza
+
+CREATE TABLE Pizzas
+(
+	Id   INT IDENTITY PRIMARY KEY,
+	Name NVARCHAR(100) NOT NULL,
+	Type NVARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Ingredients
+(
+	Id   INT IDENTITY PRIMARY KEY,
+	Name NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Pizzas_Ingredients
+(
+	PizzaId      INT FOREIGN KEY REFERENCES Pizza(Id),
+	IngredientId INT FOREIGN KEY REFERENCES Ingredient(Id),
+	PRIMARY KEY (PizzaId, IngredientId)
+);
+
+CREATE TABLE Sizes
+(
+	Id   INT IDENTITY PRIMARY KEY,
+	Name NVARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Pizzas_Prices
+(
+	PizzaId INT FOREIGN KEY REFERENCES Pizza(Id),
+	SizeId  INT FOREIGN KEY REFERENCES Size(Id),
+	Price   DECIMAL(10, 2) NOT NULL,
+	PRIMARY KEY (PizzaId, SizeId)
+);
+
